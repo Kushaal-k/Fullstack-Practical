@@ -1,11 +1,8 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const SALT_ROUNDS = 10;
 
-/**
- * User schema — stores username, email (unique), and a bcrypt-hashed password.
- */
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -30,24 +27,15 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-/**
- * Pre-save hook — hashes the password only when it has been modified,
- * preventing re-hashing on unrelated document updates.
- */
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
   next();
 });
 
-/**
- * Instance method — compares a candidate plaintext password against
- * the stored hash.  Returns a boolean.
- * @param {string} candidatePassword
- * @returns {Promise<boolean>}
- */
 userSchema.methods.comparePassword = async function (candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+export default User;

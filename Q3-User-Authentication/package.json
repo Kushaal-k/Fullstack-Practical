@@ -2,6 +2,7 @@
   "name": "q3-user-authentication",
   "version": "1.0.0",
   "description": "User Authentication System with Register/Login APIs using Express, MongoDB, Mongoose, bcrypt, and JWT",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
