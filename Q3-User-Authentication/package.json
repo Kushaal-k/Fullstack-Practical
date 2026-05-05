@@ -1,0 +1,29 @@
+{
+  "name": "q3-user-authentication",
+  "version": "1.0.0",
+  "description": "User Authentication System with Register/Login APIs using Express, MongoDB, Mongoose, bcrypt, and JWT",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "authentication",
+    "express",
+    "mongodb",
+    "jwt",
+    "bcrypt"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
